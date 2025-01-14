@@ -1,8 +1,11 @@
 name: Print Pull Request Context
-on: workflow_dispatch
+on: 
+    workflow_dispatch: 
+    pull_request: 
+        types: [opened, edited, reopened]
 jobs:
   print_context:  # Добавлено имя для задания
     runs-on: ubuntu-latest
     steps:
       - name: Print Context
-        run: echo "${{ toJson(github) }}"  # Используйте toJson для корректного отображения объекта
+        run: echo "${{ toJson(github.event) }}"  # Используйте toJson для корректного отображения объекта
