@@ -8,4 +8,8 @@ jobs:
         steps:
             - name: Pring to console
               run: echo Hello Gh Actions!
+            - name: Print a fiew files
+              run: |
+                echo First line
+                echo Second Line
 
