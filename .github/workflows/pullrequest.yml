@@ -22,12 +22,20 @@ jobs:
         run: npm run lint
   build:
     needs: lint
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
         - name: Get repository name
           uses: actions/checkout@v4
         - name: Install dependencies
           run: npm i
+        - name: Install Node JS
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }} 
         - name: Build Application
           run: npm run build
         - name: Deploy
