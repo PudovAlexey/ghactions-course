@@ -1,0 +1,12 @@
+name: Build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Добавлено указание на операционную систему
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: npm ci
+      - name: Build project
+        run: npm run build
