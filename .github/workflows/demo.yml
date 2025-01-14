@@ -1,0 +1,11 @@
+# name: Demo Workflow
+# on: workflow_dispatch
+name: Demo wrokflow
+on: workflow_dispatch
+jobs:
+    print:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Pring to console
+              run: echo Hello Gh Actions!
+
